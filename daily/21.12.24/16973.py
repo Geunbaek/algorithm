@@ -62,5 +62,7 @@ for y in range(1, n):
     for x in range(m):
         dp[y][x] = dp[y-1][x] + dp[y][x]
 
+for d in dp:
+    print(d)
 h, w, sy, sx, fy, fx = map(int, input().split())
 print(bfs(h, w, sy, sx, fy, fx))
