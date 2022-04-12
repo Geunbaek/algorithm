@@ -16,6 +16,7 @@ def fill(count):
             ny = y + dy[i]
             if 0 <= nx < n and 0 <= ny < n:
                 board[ny][nx] = 0
+
         board[y][x] = 1
         count -= 1
         if count == 0:
