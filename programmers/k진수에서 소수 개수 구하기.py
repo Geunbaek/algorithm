@@ -1,46 +1,34 @@
 import math
 
-
-def check(n):
-    if n == 0 or n == 1: return 0
-    if n == 2:
-        return 1
-    for i in range(2, int(math.sqrt(n)) + 1):
-        if n % i == 0:
-            return 0
-    return 1
-
-
-def make_knum(n, k):
-    ret = ""
+def getKDecimalNumber(n, k):
+    kDecimalNumber = ""
     while n >= k:
-        ret = f"{n % k}" + ret
+        kDecimalNumber += str(n % k)
         n //= k
+    kDecimalNumber += str(n)
+    return kDecimalNumber[::-1]
 
-    ret = f"{n}" + ret if n else "" + ret
-    return ret
+def isPrimeNumber(num):
 
+    if num == 1:
+        return False
+    if num == 2:
+        return True
 
-def oper(index, knum):
-    if index >= len(knum):
-        return 0
-
-    ret = ""
-    for i in range(index, len(knum)):
-        if knum[i] == "0":
-            break
-        ret += f"{knum[i]}"
-    return int(ret) if ret else 0
-
+    for i in range(3, int(math.sqrt(num)) + 1):
+        if num % i == 0:
+            return False
+    return True
 
 def solution(n, k):
-    knum = make_knum(n, k)
-    ans = 0
-    for i in range(len(knum)):
-        if i == 0:
-            ans += check(oper(i, knum))
-            continue
-        if knum[i] == "0":
-            ans += check(oper(i + 1, knum))
+    answer = 0
+    kDecimalNumber = getKDecimalNumber(n, k)
+    numbers = list(map(int, filter(lambda x: x, kDecimalNumber.split("0"))))
 
-    return ans
+    for num in numbers:
+        if isPrimeNumber(num):
+            answer += 1
+    return answer
+
+assert solution(437674, 3) == 3
+assert solution(110011, 10) == 2

@@ -4,17 +4,19 @@ import heapq
 
 def solve(start):
     h = []
+    heapq.heappush(h, (0, start))
     distance = [float("inf") for i in range(n + 1)]
-    distance[start] = 0
-    for next_node in graph[start]:
-        heapq.heappush(h, (1, next_node))
+    # distance[start] = 0
+    # for next_node in graph[start]:
+    #     heapq.heappush(h, (1, next_node))
 
     while h:
         w, now = heapq.heappop(h)
         if distance[now] > w:
             distance[now] = w
             for next_node in graph[now]:
-                heapq.heappush(h, (w+1, next_node))
+                if distance[next_node] > w + 1:
+                    heapq.heappush(h, (w+1, next_node))
     return distance[1:]
 
 
