@@ -2,9 +2,7 @@ from collections import defaultdict
 
 def solution(id_list, report, k):
     ban = defaultdict(int)
-    ids = {}
-    for user_id in id_list:
-        ids[user_id] = set()
+    ids = defaultdict(set)
 
     for report_info in report:
         user, ban_user = report_info.split()
