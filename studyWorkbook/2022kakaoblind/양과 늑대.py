@@ -1,7 +1,4 @@
 from collections import deque
-import copy
-
-
 def bfs(graph, info):
     q = deque()
     maxCount = 0

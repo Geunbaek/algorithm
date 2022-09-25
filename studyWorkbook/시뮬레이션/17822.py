@@ -12,7 +12,6 @@ def rotateCounterclockwise(arr, k):
     for _ in range(k):
         arr.append(arr.popleft())
 
-
 def isValidRange(y):
     return 0 <= y < n
 
