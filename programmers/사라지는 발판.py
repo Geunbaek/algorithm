@@ -12,9 +12,9 @@ def play(board, aloc, bloc):
 
     while q:
         count, bs, a, b, turn = q.popleft()
-        if bs[a[1]][a[0]] == 0:
+        if bs[a[0]][a[1]] == 0:
             return count
-        if bs[b[1]][b[0]] == 0:
+        if bs[b[0]][b[1]] == 0:
             return count
 
         if turn == 'A':
@@ -43,3 +43,6 @@ def solution(board, aloc, bloc):
     return play(board, aloc, bloc)
 
 print(solution([[1, 1, 1], [1, 1, 1], [1, 1, 1]],	[1, 0],	[1, 2]))
+print(solution([[1, 1, 1], [1, 0, 1], [1, 1, 1]],	[1, 0],	[1, 2]))
+print(solution([[1, 1, 1, 1, 1]],	[0, 0],	[0, 4]))
+print(solution([[1]],	[0, 0],	[0, 0]))
