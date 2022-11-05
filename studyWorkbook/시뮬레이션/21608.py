@@ -22,7 +22,7 @@ def getPositionsInfo(favoriteStudents):
                     favoriteStudentCount += 1
                 elif classRoom[ny][nx] == 0:
                     emptyRoomCount += 1
-            posInfo.append((favoriteStudentCount, emptyRoomCount, y, x))
+            posInfo.append((favoriteStudentCount, emptyRoomCount, y ,x))
     return posInfo
 
 def getTotalSatisfaction():
@@ -39,7 +39,6 @@ def getTotalSatisfaction():
                     favoriteStudentCount += 1
             result += getSatisfaction(favoriteStudentCount)
     return result
-
 
 def getSatisfaction(favoriteStudentCount):
     if favoriteStudentCount == 0:
