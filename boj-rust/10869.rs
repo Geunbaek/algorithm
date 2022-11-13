@@ -1,0 +1,19 @@
+use std::io;
+
+fn main(){
+  let mut input = String::new();
+
+  io::stdin().read_line(&mut input)
+    .expect("fail");
+
+  let numbers: Vec<_> = input
+    .split(" ")
+    .map(|num| num.trim().parse::<f64>().unwrap())
+    .collect();
+
+  println!("{}", numbers[0] + numbers[1]);
+  println!("{}", numbers[0] - numbers[1]);
+  println!("{}", numbers[0] * numbers[1]);
+  println!("{}", numbers[0] as i64 / numbers[1] as i64);
+  println!("{}", numbers[0] % numbers[1]);
+}

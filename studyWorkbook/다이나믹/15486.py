@@ -3,18 +3,19 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-works = [0 for _ in range(1500002)]
+works = []
 
-for i in range(1, n + 1):
+for _ in range(n):
     t, p = map(int, input().split())
-    works[i] = (t, p)
+    works.append((t, p))
 
-dp = [0 for _ in range(1500002)]
+dp = [0 for _ in range(n + 1)]
 
-for i in range(n, 0, -1):
-    if i + works[i][0] > n + 1:
-        dp[i] = dp[i + 1]
-    else:
-        dp[i] = max(dp[i + 1], works[i][1] + dp[i + works[i][0]])
+for i, work in enumerate(works):
+    t, p = work
+    if i + t <= n:
+        dp[i + t] = max(dp[i + t], dp[i] + p)
+    elif i - 1 >= 0:
+        dp[i] = max(dp[i], dp[i - 1])
 
 print(max(dp))
